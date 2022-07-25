@@ -21,8 +21,9 @@ jobs:
         uses: kostya-ten/ssh-server-deploy@v4
         with:
           host: 'www.peterwangyong.xyz'
+          port: 22
           private_key: ${{ secrets.ALIYUN_SSH_KEY }}
           scp_source: dist
           scp_target: '/root/actions-test/'
-      - name: TEST DOCKER
-        run: docker -v
+      - name: test ssh port
+        run: telnet www.peterwangyong.xyz 22
