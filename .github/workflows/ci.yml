@@ -18,11 +18,19 @@ jobs:
         run: npm install
       - name: Run build task
         run: npm run build
-      - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@v2.2.11
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.ALIYUN_SSH_KEY }}
-          SOURCE: 'dist/'
-          REMOTE_HOST: 'www.peterwangyong.xyz'
-          REMOTE_USER: root
-          TARGET: /tmp
+      # - name: Deploy to Server
+      #   uses: easingthemes/ssh-deploy@v2.2.11
+      #   env:
+      #     SSH_PRIVATE_KEY: ${{ secrets.ALIYUN_SSH_KEY }}
+      #     SOURCE: 'dist/'
+      #     REMOTE_HOST: 'www.peterwangyong.xyz'
+      #     REMOTE_USER: root
+      #     TARGET: /tmp
+      - name: ssh-scp-deploy
+        uses: marcodallasanta/ssh-scp-deploy@v1.2.0
+        with:
+          local: './dist' # Local file path - REQUIRED false - DEFAULT ./
+          remote: '/tmp' # Remote file path - REQUIRED false - DEFAULT ~/
+          host: 'www.peterwangyong.xyz' # Remote server address - REQUIRED true
+          user: root # Remote server user - REQUIRED true
+          key: ${{ secrets.ALIYUN_SSH_KEY }}
