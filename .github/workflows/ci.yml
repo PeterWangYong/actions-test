@@ -18,19 +18,37 @@ jobs:
         run: npm install
       - name: Run build task
         run: npm run build
-      # - name: Deploy to Server
-      #   uses: easingthemes/ssh-deploy@v2.2.11
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.ALIYUN_SSH_KEY }}
-      #     SOURCE: 'dist/'
-      #     REMOTE_HOST: 'www.peterwangyong.xyz'
-      #     REMOTE_USER: root
-      #     TARGET: /tmp
-      - name: ssh-scp-deploy
-        uses: marcodallasanta/ssh-scp-deploy@v1.2.0
-        with:
-          local: './dist' # Local file path - REQUIRED false - DEFAULT ./
-          remote: '/tmp' # Remote file path - REQUIRED false - DEFAULT ~/
-          host: 'www.peterwangyong.xyz' # Remote server address - REQUIRED true
-          user: root # Remote server user - REQUIRED true
-          key: ${{ secrets.ALIYUN_SSH_KEY }}
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEA1ZRK7+JwzywGi7eni2PksMQvvIMtAV6IJL1K8omNwLt3TuUo
++inKwG7bKycNyCufYIgzQTgI+wAI357ZMTGV8g53qSKlS2WcVZGUJOIV2mkvnBW2
+gxLh65CBjPuXz/QTdXLL6EVVNolPWYQ48lcXDLvRpVPIcpgXVgMQlfl8+lNAjl42
+h84Ecv4yRNtP7lWCvyZ3Inr38sfNayvYijw0dA4wv5vjkbPlEi9tCbAvwp1/2p7q
+oGdUlO1Yi4SiGaYvgkCOEs0JHDRSVsT2jlOn/JLPZD43/qVMBV2N5XpnMeMfAWjr
+/4FI5Y3sA7Y54HcitqGM/kHjyfi8V18NDZ9p0wIDAQABAoIBAQCei8jdLpFjmWD6
+ksjzNqJrfheZrx7Xp18VNtfOF8J80i0NChxTKHb0Rta3v/QBJjDXrgOuZHR2L15m
+8jp0xER1PbwieC+QOsvE0Z7RimuCiRbonU2xG3FONyWUjKfznVJcm2027VEGfQPE
+hdzoOTJJJ5vHSNzCBJk+JmRHkL7v60V5z7udv8hIfNN8vZg2P+C0AIUJMY3f0dYf
+j2j1iY3P6tYKHPBLbCgP1Rd5zEIF7ux2naFRDIUdcv1JA9oeKfwSZYQADXk1YeHR
+MCQmoqdnjbRcBghkAYzR0NpSXBjKomeySOvKBdN5cINXDiNHhqU8GqN0b9KfmVWq
+rcOSnIehAoGBAPgUq41EktcKcVTHnvW0s8/FsOlHDZcc7RMHlgxbJdpXgI3w3dD3
+r9wy3RoSuzx2flF6ZFnAmzOhqdO9IsNVkQy66CxgZ2juf9Peo9VdAhL17iqaK678
+7XapJbsvjZACS0MYJN4WEHZcN6a/XQpMye9dkPKISFQflpe9hOIFJ/FbAoGBANxl
+rLJuj/BQdGLagXBAxDv/4g18K4iWoHd4FrHWRXN026bYB7fx1mIzj7RfHaM/6KdH
+n3C1daag0SYhgbBy9jxXAIjRQa3YS7r02fKhNQ0K028+b5ZqDgr+oOU/cSpKkiHU
+fOfJ1rWZUsBcF/dGQDKroKOkjEs65AaAeJDXfJrpAoGBAJBavsRyLZvR6MZzbgz9
+fFAfceUcQk03OMCE/ovsEeeuWRC/IuOw7PUN59h/I9J4BOL2fCQ5zlXJ8V9TREIz
+rTaiH+2Kn0HQ3jLz75N9DnLoBhFmKpsldCxDGsCEWDR/ETpWd0V/w06MNJnj6ojO
+zAZsBKcMJEJHK0LatdMrOuXXAoGBANjldr9i72SgyOlAAIJoOraRa/W5bV5OXj00
+gaEiLdch+ciIcZAk/8ZE1/e6Y4B1NJDre42ABvik6y+LagYsHQfk1zHOPcTISD8F
+GDgfTgY30Tx5RXfRh2Bqlg0GEmh8WrPQWdwCVrsA2N9VwoAnMqarILvrA+ZFXoLH
+i99/MbGBAoGAbsADySkMg7cSmDIzc+J+lHs6cdF/7tMNE8TJZ+t4+fjrIGz4WlpD
+vNOquUPMBwHs6LoCDtHc1AeAuKh27AV9O6mfv9L7b9m0srDpiG2WUyCz2poUlnO
+E2qh4++IyDm6ZZR/vjoW4vEOpsoU6tUf9Hnirk0fR7c3GJu+D825REE=
+-----END RSA PRIVATE KEY-----'
+          SOURCE: 'dist/'
+          REMOTE_HOST: 'www.peterwangyong.xyz'
+          REMOTE_USER: root
+          TARGET: /tmp
