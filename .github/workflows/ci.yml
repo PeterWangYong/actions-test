@@ -3,7 +3,7 @@
 name: CI
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,5 +23,4 @@ jobs:
           host: 'www.peterwangyong.xyz'
           private_key: ${{ secrets.ALIYUN_SSH_KEY }}
           scp_source: dist,
-          scp_target: '/app/actions-test/'
-      
+          scp_target: '/root/actions-test/'
