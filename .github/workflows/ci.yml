@@ -18,6 +18,8 @@ jobs:
         run: npm install
       - name: Run build task
         run: npm run build
+      - name: Test
+        run: echo ${{ secrets.ALIYUN_REMOTE_HOST }} ${{ secrets.ALIYUN_REMOTE_USER }} ${{ secrets.ALIYUN_REMOTE_TARGET }}
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.2.11
         env:
@@ -26,5 +28,3 @@ jobs:
           REMOTE_HOST: ${{ secrets.ALIYUN_REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.ALIYUN_REMOTE_USER }}
           TARGET: ${{ secrets.ALIYUN_REMOTE_TARGET }}
-      - name: Test
-        run: echo ${{ secrets.ALIYUN_REMOTE_HOST }} ${{ secrets.ALIYUN_REMOTE_USER }} ${{ secrets.ALIYUN_REMOTE_TARGET }}
