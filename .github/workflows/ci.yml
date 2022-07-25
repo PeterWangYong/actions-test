@@ -22,5 +22,5 @@ jobs:
         with:
           host: 'www.peterwangyong.xyz'
           private_key: ${{ secrets.ALIYUN_SSH_KEY }}
-          scp_source: dist,
+          scp_source: dist
           scp_target: '/root/actions-test/'
